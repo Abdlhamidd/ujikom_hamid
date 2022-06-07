@@ -6,6 +6,8 @@ $data_lingkaran = unserialize(file_get_contents('./data/lingkaran.txt'));
 // mendapatkan data persegi.txt
 $data_persegi = unserialize(file_get_contents('./data/persegi.txt'));
 
+// var_dump($data_segitiga);
+
 // menjumlahkan semua data bangun datar
 $jumlah_bangun_datar = count($data_segitiga) + count($data_lingkaran) + count($data_persegi);
 
@@ -18,6 +20,12 @@ $persentase_lingkaran = count($data_lingkaran) / $jumlah_bangun_datar * 100;
 // menampilkan persentase persegi
 $persentase_persegi = count($data_persegi) / $jumlah_bangun_datar * 100;
 
+// nilai maximum perhitungan yang dilakukan
+$max = max($persentase_segitiga, $persentase_lingkaran, $persentase_persegi);
+
+// nilain minimum perhitungan yang dilakukan
+$min = min($persentase_segitiga, $persentase_lingkaran, $persentase_persegi);
+
 
     include 'template/header.php';
     ?>
@@ -26,7 +34,6 @@ $persentase_persegi = count($data_persegi) / $jumlah_bangun_datar * 100;
         <div class="card p-3 bg-light mb-3">
             <div class="card-body">
                 <div class="row mb-3">
-
                     <!-- Segitiga -->
                     <div class="col-md-3">
                         <div class="card text-center">
@@ -89,6 +96,46 @@ $persentase_persegi = count($data_persegi) / $jumlah_bangun_datar * 100;
                                     <div class="col-md-12">
                                         <div class="card">
                                             <h1><?= round($persentase_persegi) ?><span> %</span></h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card p-3 bg-light mb-3">
+            <div class="card-body">
+                <div class="row mb-3">
+                    <!-- Segitiga -->
+                    <div class="col-md-6">
+                        <div class="card text-center">
+                            <div class="card-header bg-dark text-light">
+                                Nilai Maximum Perhitungan
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="card">
+                                            <h1><?= round($max) ?></h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Segitiga -->
+                    <div class="col-md-6">
+                        <div class="card text-center">
+                            <div class="card-header bg-dark text-light">
+                                Nilai Minimum Perhitungan
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="card">
+                                            <h1><?= round($min) ?></h1>
                                         </div>
                                     </div>
                                 </div>

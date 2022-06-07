@@ -56,11 +56,11 @@ if (isset($_GET['hapus'])) {
                                 <form action="segitiga.php" method="post">
                                     <div class="form-group">
                                         <label for="alas">Alas</label>
-                                        <input type="number" class="form-control" name="alas" id="alas" placeholder="Masukkan alas">
+                                        <input type="number" class="form-control" name="alas" id="alas" placeholder="Masukkan alas" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="tinggi">Tinggi</label>
-                                        <input type="number" class="form-control" name="tinggi" id="tinggi" placeholder="Masukkan tinggi">
+                                        <input type="number" class="form-control" name="tinggi" id="tinggi" placeholder="Masukkan tinggi" required>
                                     </div>
                                     <button type="submit" class="btn btn-primary">Hitung</button>
                                 </form>

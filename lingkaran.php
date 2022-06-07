@@ -8,10 +8,8 @@ if (file_exists('./data/lingkaran.txt')) {
     $lingkaran = file('./data/lingkaran.txt');
     // melakukan konversi dari format data serialize menjadi array
     $data_lingkaran = unserialize($lingkaran[0]);
-
-    // menampilkan data dari yang terbesar ke yang terkecil tanggal
-
-    // rsort($data_lingkaran);
+    // menampilkan data dari terbesar berdasarkan tanggal menggunakan rsort
+    rsort($data_lingkaran);
 }
 
 // FIA isset cek nilai dari form, issets cek apakah ada nilai dari form
@@ -43,6 +41,14 @@ if (isset($_GET['hapus'])) {
     file_put_contents('./data/lingkaran.txt', serialize($data_lingkaran));
 }
 
+// FIA isset cek nilai dari form, issets cek apakah ada nilai dari form
+// jika di temukan todo melalui metode post maka akan di proses
+function simpan_data($data_lingkaran) {
+    // menyimpan data array ke dalam file
+    file_put_contents('./data/lingkaran.txt', serialize($data_lingkaran));
+    header('Location: lingkaran.php');
+}
+
     include 'template/header.php';
     ?>
     <!-- Content -->
@@ -60,7 +66,7 @@ if (isset($_GET['hapus'])) {
                                 <form action="lingkaran.php" method="post">
                                     <div class="form-group">
                                         <label for="jari">Jari-jari</label>
-                                        <input type="number" class="form-control" name="jari" id="jari" placeholder="Masukkan jari-jari">
+                                        <input type="number" class="form-control" name="jari" id="jari" placeholder="Masukkan jari-jari" required>
                                     </div>
                                     <button type="submit" class="btn btn-primary">Hitung</button>
                                 </form>
