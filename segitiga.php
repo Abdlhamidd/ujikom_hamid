@@ -16,12 +16,16 @@ if (isset($_POST['alas'])) {
     // mengambil nilai dari form
     $alas = $_POST['alas'];
     $tinggi = $_POST['tinggi'];
+    $date = date('Y-m-d');
+    $time = date('H:i:s');
     $luas = $alas * $tinggi / 2;
     // menambahkan data ke dalam array
     $data_segitiga[] = [
         'alas' => $alas,
         'tinggi' => $tinggi,
-        'luas' => $luas
+        'luas' => $luas,
+        'date' => $date,
+        'time' => $time
     ];
     // menyimpan data array ke dalam file
     file_put_contents('./data/segitiga.txt', serialize($data_segitiga));
@@ -102,6 +106,8 @@ if (isset($_GET['hapus'])) {
                                             <th>Alas</th>
                                             <th>Tinggi</th>
                                             <th>Luas</th>
+                                            <th>Tanggal</th>
+                                            <th>Waktu</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -114,6 +120,8 @@ if (isset($_GET['hapus'])) {
                                                 echo "<td>$value[alas]</td>";
                                                 echo "<td>$value[tinggi]</td>";
                                                 echo "<td>$value[luas]</td>";
+                                                echo "<td>$value[date]</td>";
+                                                echo "<td>$value[time]</td>";
                                                 echo "<td>
                                                     <a href='segitiga.php?hapus=$key' class='btn btn-danger'>Hapus</a>
                                                 </td>";

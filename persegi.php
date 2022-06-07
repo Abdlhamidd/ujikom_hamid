@@ -16,10 +16,14 @@ if (isset($_POST['sisi'])) {
     // mengambil nilai dari form
     $sisi = $_POST['sisi'];
     $luas = $sisi * $sisi;
+    $date = date('Y-m-d');
+    $time = date('H:i:s');
     // menambahkan data ke dalam array
     $data_persegi[] = [
         'sisi' => $sisi,
-        'luas' => $luas
+        'luas' => $luas,
+        'date' => $date,
+        'time' => $time
     ];
     // menyimpan data array ke dalam file
     file_put_contents('./data/persegi.txt', serialize($data_persegi));
@@ -95,6 +99,8 @@ if (isset($_GET['hapus'])) {
                                             <th>No</th>
                                             <th>Sisi</th>
                                             <th>Luas</th>
+                                            <th>Tanggal</th>
+                                            <th>Waktu</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -106,6 +112,8 @@ if (isset($_GET['hapus'])) {
                                                 echo "<td>".($key+1)."</td>";
                                                 echo "<td>".$value['sisi']."</td>";
                                                 echo "<td>".$value['luas']."</td>";
+                                                echo "<td>".$value['date']."</td>";
+                                                echo "<td>".$value['time']."</td>";
                                                 echo "<td>";
                                                 echo "<a href='?hapus=$key' class='btn btn-danger'>Hapus</a>";
                                                 echo "</td>";
